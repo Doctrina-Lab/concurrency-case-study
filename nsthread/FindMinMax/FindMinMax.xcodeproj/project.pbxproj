@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E6231242B6E0E61008C724F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6231232B6E0E61008C724F /* main.m */; };
+		2E62314E2B70ACBC008C724F /* FindMinMaxThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E62314D2B70ACBC008C724F /* FindMinMaxThread.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		2E6231202B6E0E61008C724F /* FindMinMax */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FindMinMax; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6231232B6E0E61008C724F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2E62314C2B70ACBC008C724F /* FindMinMaxThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindMinMaxThread.h; sourceTree = "<group>"; };
+		2E62314D2B70ACBC008C724F /* FindMinMaxThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindMinMaxThread.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				2E6231232B6E0E61008C724F /* main.m */,
+				2E62314C2B70ACBC008C724F /* FindMinMaxThread.h */,
+				2E62314D2B70ACBC008C724F /* FindMinMaxThread.m */,
 			);
 			path = FindMinMax;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E62314E2B70ACBC008C724F /* FindMinMaxThread.m in Sources */,
 				2E6231242B6E0E61008C724F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
