@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Thread/Thread.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OperationQueue/OperationQueue.xcodeproj">
    </FileRef>
 </Workspace>
