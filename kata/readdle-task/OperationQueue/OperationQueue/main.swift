@@ -15,6 +15,10 @@ let addSemaphore = DispatchSemaphore(value: 1)
 let readSemaphore = DispatchSemaphore(value: 0)
 let removeSemaphore = DispatchSemaphore(value: 0)
 
+let maxReadersCount = 5
+var readersCounter = 0
+let readersCounterLock = NSLock()
+
 queue.addOperation {
     let symbols = ["A", "B", "C"]
     var index = 0
@@ -28,30 +32,23 @@ queue.addOperation {
         sharedData.append(symbol)
         print("Thread 1 added symbol: \(symbol)")
         
-        readSemaphore.signal()
-        readSemaphore.signal()
+        (0..<maxReadersCount).forEach { _ in readSemaphore.signal() }
     }
 }
 
-let maxReaders = 2
-var readersCount = 0
-let readerLock = NSLock()
-for threadNumber in 2...maxReaders + 1 {
+for readerNumber in 2...maxReadersCount + 1 {
     queue.addOperation {
         while true {
             readSemaphore.wait()
             
             if let symbol = sharedData.first {
-                print("Thread \(threadNumber) read symbol: \(symbol)")
+                print("Thread \(readerNumber) read symbol: \(symbol)")
             }
             
-            readerLock.lock()
-            readersCount += 1
-            if (readersCount == maxReaders) {
-                readersCount = 0
-                removeSemaphore.signal()
-            }
-            readerLock.unlock()
+            readersCounterLock.lock()
+            readersCounter = (readersCounter + 1) % maxReadersCount
+            if readersCounter == 0 { removeSemaphore.signal() }
+            readersCounterLock.unlock()
         }
     }
 }
@@ -61,7 +58,7 @@ queue.addOperation {
         removeSemaphore.wait()
         
         if !sharedData.isEmpty {
-            print("Thread 4 removed symbol: \(sharedData.removeFirst())")
+            print("Thread \(maxReadersCount + 2) removed symbol: \(sharedData.removeFirst())")
         }
         
         addSemaphore.signal()
