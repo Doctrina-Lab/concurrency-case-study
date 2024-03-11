@@ -5,6 +5,9 @@
       location = "group:Thread/Thread.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:GCD/GCD.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OperationQueue/OperationQueue.xcodeproj">
    </FileRef>
 </Workspace>
